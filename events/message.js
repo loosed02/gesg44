@@ -1,7 +1,5 @@
 const Discord = require('discord.js');
 //Console chalk
-const chalk = require(`chalk`);
-const log = console.log;
 const prefix = require(`../settings/config.json`)
 //Client
 const client = new Discord.Client();
