@@ -12,7 +12,7 @@ module.exports = async(client, message) => {
         .setColor("#4286f4");
         if (message.guild.channels.exists("name", "ticket-" + message.author.id)) return message.channel.send(embed);
         client.guilds.get(`416677773852278785`).createChannel(`ticket-${message.author.id}`, "text").then(c => {
-            c.setParent(`416677773852278785`)
+            c.setParent(`480142161816584193`)
             let role = message.guild.roles.find(c => c.name, "Staff");
             let role2 = message.guild.roles.find(c => c.name, "@everyone");
             //Permissions
