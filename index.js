@@ -17,8 +17,8 @@ client.on("message", message => {
     }
   });
 client.on('ready', () => {
-    client.user.setActivity(`${client.users.size} users`, { type: "WATCHING"});
     //Status
+    client.user.setActivity({game: {name: "TheOriginMC.com", type: 0}});
     client.user.setStatus("online");
 });
     //Events

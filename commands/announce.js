@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
     .setColor("#4286f4")
     .setThumbnail("https://cdn.discordapp.com/icons/479464813290848271/591c100491cdd61bb887dbfa961e8131.png")
     .addField("TheOriginMC Announcement", announcement)
-    .setFooter("Check out our server TheOriginMc.Net or Play.TheOriginMc.net");
+    .setFooter("Check out our server TheOriginMc.com or Play.TheOriginMc.com");
     let announceChannel = message.guild.channels.find(`name`, "announcement");
     if (!announceChannel) return message.channel.send("this channel doesn't exist.");
     message.delete().catch(O_o = {});
