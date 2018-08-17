@@ -1,29 +1,38 @@
 const Discord = require(`discord.js`);
 const fs = require(`fs`);
-const config = require('./settings/config.json')
+const auth = require(`./settings/config.json`)
 const client = new Discord.Client({
     disableEveryone: false,
     autoReconnect: true
 });
-client.on("message", message =>{
-       if(message.author.bot) return;
-       if(message.content.indexOf(config.prefix) !== 0) return;
-       const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
-       const command = args.shift().toLowerCase();
-       try {
-       let commandFile = require(`./commands/${command}.js`);
-       commandFile.run(client, message, args);
-    } catch (err) {
-           }
-         });
-       
-client.on('ready', () => {
-    //Status
-    client.user.setActivity({game: {name: "TheOriginMC.com", type: 0}});
-    client.user.setStatus("online");
+client.commands = new Discord.Collection();
+fs.readdir("./commands/", (err, files) => {
+  if(err) console.log(err);
+  let jsfile = files.filter(f => f.split(".").pop() === "js")
+  if(jsfile.length <= 0){
+    console.log("Couldn't find commands.");
+    return;
+  }
+    jsfile.forEach((f, i) =>{
+    let props = require(`./commands/${f}`);
+    console.log(`${f} loaded!`);
+    client.commands.set(props.help.name, props);
+  });
+})
+  //Prefix handler
+  client.on("message", async message => {
+  if(message.author.bot) return;
+  if(message.channel.type === "dm") return;
+
+  let prefix = auth.prefix;
+  let messageArray = message.content.split(" ");
+  let cmd = messageArray[0];
+  let args = messageArray.slice(1);
+  let commandfile = client.commands.get(cmd.slice(prefix.length));
+  if(commandfile) commandfile.run(client,message,args);
+
 });
     //Events
     client.on('message', message => require('./events/ticket/message.js')(client, message));
 
- 
 client.login(process.env.TOKEN);
