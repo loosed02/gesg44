@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, args) => {
     .setThumbnail("https://cdn.discordapp.com/icons/479464813290848271/591c100491cdd61bb887dbfa961e8131.png")
     .addField("TheOriginMC Announcement", announcement)
     .setFooter("Check out our server TheOriginMc.com or Play.TheOriginMc.com");
-    let announceChannel = message.guild.channels.find(`name`, "announcement");
+    let announceChannel = message.guild.channels.find(`name`, "news");
     if (!announceChannel) return message.channel.send("this channel doesn't exist.");
     message.delete().catch(O_o = {});
     announceChannel.send(annembed);  
