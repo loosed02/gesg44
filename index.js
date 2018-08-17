@@ -23,7 +23,7 @@ client.on('ready', () => {
     client.user.setStatus("online");
 });
     //Events
-    client.on('message', message => require('./events/message.js')(client, message));
+    client.on('message', message => require('./events/ticket/message.js')(client, message));
 
  
 client.login(process.env.TOKEN);
