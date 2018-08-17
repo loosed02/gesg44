@@ -17,8 +17,12 @@ const client = new Discord.Client({
      client.commands.set(commandName, props );
     });
 });
+client.on('ready', () => {
+    client.user.setActivity(`${client.users.size} users`, { type: "WATCHING"});
+    //Status
+    client.user.setStatus("online");
+});
     //Events
-    client.on('ready', () => require(`./events/ready.js`)(client));    
     client.on('message', message => require('./events/message.js')(client, message));
     client.on('message', message => require('./events/ticket/message.js')(client, message));
 
