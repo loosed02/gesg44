@@ -1,5 +1,6 @@
 const Discord = require(`discord.js`);
 const fs = require(`fs`);
+const config = require('./settings/config.json')
 const client = new Discord.Client({
     disableEveryone: false,
     autoReconnect: true
