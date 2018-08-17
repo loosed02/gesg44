@@ -1,7 +1,7 @@
 {
   "name": "TheOriginMC",
-  "description": "The Origin MC",
-  "version": "1.01.0",
+  "description": "A Discord bot coded in Discord.JS, hosted using Heroku.",
+  "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
