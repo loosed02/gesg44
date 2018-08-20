@@ -8,16 +8,3 @@ module.exports.run = async (client, message, args) => {
     message.channel.send(embed);
     message.delete();
 };
-
-exports.conf = {
-  enabled: true,
-  guildOnly: false,
-  aliases: ['i'],
-  permLevel: 0
-};
-
-exports.help = {
-  name: 'info',
-  description: 'Serverinfo',
-  usage: 'info'
-};
