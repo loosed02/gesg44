@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 module.exports.run = async (client, msg, args) => {
 
-    if(!message.member.hasPermission("SEND_MESSAGES"));
+    if(!msg.member.hasPermission("SEND_MESSAGES"));
     if(args[0] == "in-game"){
         let error1 = new Discord.RichEmbed()
         .setAuthor("Suggestion - Error")
